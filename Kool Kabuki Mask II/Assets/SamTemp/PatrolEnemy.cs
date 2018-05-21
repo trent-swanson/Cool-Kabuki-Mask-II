@@ -18,8 +18,6 @@ public class PatrolEnemy : EnemyCharacter
     protected override void Update()
     {
         base.Update();
-
-
     }
 
     protected override void EnemyFunctions()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCharacter : Character
 {
-    protected const float CLOSE_ENOUGH_TO_NODE = 0.5f;
+    protected const float CLOSE_ENOUGH_TO_NODE = 1.0f;
     protected enum ENEMY_STATE { ENEMY_FUNCTION, ATTACKING, INVESTIGATING };
     protected ENEMY_STATE m_currentState = ENEMY_STATE.ENEMY_FUNCTION;
 
@@ -13,10 +13,14 @@ public class EnemyCharacter : Character
 
     [SerializeField]
     protected float m_detectionRange = 10.0f;
+    //In degrees
+    [SerializeField]
+    protected float m_detectionCone = 30.0f;
+
 
     protected GameObject m_player = null;
     [SerializeField]
-    protected Vector3 m_lastKnowPos = Vector3.positiveInfinity;
+    protected Vector3 m_lastKnowPos = Vector3.zero;
     protected bool m_isPositionSet = false;
 
     protected override void Start()
@@ -37,7 +41,7 @@ public class EnemyCharacter : Character
             return;
 
         //Setting states
-        if (m_currentState == ENEMY_STATE.ATTACKING && Vector3.Distance(m_player.transform.position, transform.position) > m_detectionRange)
+        if (m_currentState == ENEMY_STATE.INVESTIGATING || (m_currentState == ENEMY_STATE.ATTACKING && Vector3.Distance(m_player.transform.position, transform.position) > m_detectionRange))
             m_currentState = ENEMY_STATE.INVESTIGATING;
         else if (Vector3.Distance(m_player.transform.position, transform.position) > m_detectionRange)
             m_currentState = ENEMY_STATE.ENEMY_FUNCTION;
@@ -64,9 +68,14 @@ public class EnemyCharacter : Character
 
     protected void MoveTowards(Vector3 pos)
     {
-        m_rb.velocity = transform.forward * m_forwardSpeed;
+        Vector3 targetVelocity = transform.forward * m_forwardSpeed;
+        targetVelocity.y = m_rb.velocity.y;
+        m_rb.velocity = targetVelocity;
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation((pos - transform.position).normalized), m_rotateSpeed * Time.deltaTime);
+        Vector3 targetDirection = pos - transform.position;
+        targetDirection.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, m_rotateSpeed * Time.deltaTime);
     }
 
     //Move towards player 
@@ -76,7 +85,10 @@ public class EnemyCharacter : Character
         //When just close enough to attack 
         if (m_canAttack && Vector3.Distance(m_player.transform.position, transform.position) < m_attackRange * 0.9f + m_colliderExtents.z)
         {
-            transform.LookAt(m_player.transform.position);
+            Vector3 targetDirection = m_player.transform.position - transform.position;
+            targetDirection.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, float.PositiveInfinity);
             Attack(m_playerMask);
         }
         else
@@ -97,7 +109,7 @@ public class EnemyCharacter : Character
         //Move towards player
         MoveTowards(m_lastKnowPos);
 
-        if(Vector3.Distance(m_lastKnowPos, transform.position) < CLOSE_ENOUGH_TO_NODE)
+        if (Vector3.Distance(m_lastKnowPos, transform.position) < CLOSE_ENOUGH_TO_NODE)
         {
             m_currentState = ENEMY_STATE.ENEMY_FUNCTION;
             m_isPositionSet = false;
@@ -107,5 +119,16 @@ public class EnemyCharacter : Character
     protected virtual void EnemyFunctions()
     {
 
+    }
+
+    protected bool PlayerInVisionCone()
+    {
+        //Intially check distance
+        if (Vector3.Distance(m_lastKnowPos, transform.position) > m_detectionRange)
+            return false;
+        //Check angle
+        if(Vector3.Angle(transform.forward, m_player.transform.position - transform.position) > m_detectionCone)
+            return false;
+        return true;
     }
 }
