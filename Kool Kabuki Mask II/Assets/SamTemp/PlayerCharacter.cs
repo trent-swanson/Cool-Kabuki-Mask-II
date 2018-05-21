@@ -49,8 +49,16 @@ public class PlayerCharacter : Character
 
     private bool IsGrounded()
     {
-        if (Physics.Raycast(transform.position, -transform.up, m_colliderExtents.y + 0.1f, m_enviromentMask))
+        if (Physics.Raycast(transform.position, -transform.up, m_colliderHeight+ 0.1f, m_environmentMask))
             return true;
         return false;
+    }
+
+    public bool CanHitPlayer(Vector3 enemyPosition)
+    {
+        //TODO
+        //Check if player is blocking
+        return true;
+        //Check funcky angle
     }
 }

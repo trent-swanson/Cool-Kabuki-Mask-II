@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CapsuleCollider))]
 public class Character : MonoBehaviour
 {
     [SerializeField]
@@ -22,9 +23,10 @@ public class Character : MonoBehaviour
     [SerializeField]
     protected float m_attackRange = 1.0f;
 
-    protected Vector3 m_colliderExtents;
+    protected float m_colliderHeight;
+    protected float m_colliderRadius;
 
-    protected int m_enviromentMask;
+    protected int m_environmentMask;
     protected int m_enemyMask;
     protected int m_playerMask;
 
@@ -41,9 +43,10 @@ public class Character : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         m_animator = GetComponent<Animator>();
 
-        m_colliderExtents = GetComponent<Collider>().bounds.extents;
+        m_colliderHeight = GetComponent<CapsuleCollider>().height;
+        m_colliderRadius = GetComponent<CapsuleCollider>().radius;
 
-        m_enviromentMask = LayerMask.GetMask("Enviroment");
+        m_environmentMask = LayerMask.GetMask("Environment");
         m_enemyMask = LayerMask.GetMask("Enemy");
         m_playerMask = LayerMask.GetMask("Player");
     }
@@ -87,13 +90,13 @@ public class Character : MonoBehaviour
 
         RaycastHit[] hits;
         //Right
-        hits = Physics.RaycastAll(transform.position + transform.right * m_colliderExtents.x, transform.forward, m_colliderExtents.z + m_attackRange, mask);
+        hits = Physics.RaycastAll(transform.position + transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
         AddHitsToList(ref hitObjects, hits);
         //Center
-        hits = Physics.RaycastAll(transform.position, transform.forward, m_colliderExtents.z + m_attackRange, mask);
+        hits = Physics.RaycastAll(transform.position, transform.forward, m_colliderRadius + m_attackRange, mask);
         AddHitsToList(ref hitObjects, hits);
         //Left
-        hits = Physics.RaycastAll(transform.position - transform.right * m_colliderExtents.x, transform.forward, m_colliderExtents.z + m_attackRange, mask);
+        hits = Physics.RaycastAll(transform.position - transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
         AddHitsToList(ref hitObjects, hits);
 
         foreach (Character character in hitObjects)

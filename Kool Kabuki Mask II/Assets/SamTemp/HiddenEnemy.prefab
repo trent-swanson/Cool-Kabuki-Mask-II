@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 23745474108903012}
   - component: {fileID: 95770270039483042}
   - component: {fileID: 54096538871038884}
-  - component: {fileID: 114092221292544032}
+  - component: {fileID: 114486289844675484}
   m_Layer: 10
-  m_Name: PatrollingEnemy
+  m_Name: HiddenEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114092221292544032
+--- !u!114 &114486289844675484
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -198,19 +198,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1531322933073338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70c0be76cf38c34eb5d1cb4ae0da0eb, type: 3}
+  m_Script: {fileID: 11500000, guid: df587258f01d9f640a4005992055213e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 100
   m_attackDamage: 10
   m_deathEffect: {fileID: 0}
-  m_forwardSpeed: 3
-  m_rotateSpeed: 5
+  m_forwardSpeed: 10
+  m_rotateSpeed: 10
   m_attackRange: 1
   m_detectionRange: 10
   m_detectionCone: 30
   m_lastKnowPos: {x: 0, y: 0, z: 0}
-  m_patrolNodes: []
 --- !u!136 &136736710797931544
 CapsuleCollider:
   m_ObjectHideFlags: 1

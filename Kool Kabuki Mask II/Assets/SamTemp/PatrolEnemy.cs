@@ -22,13 +22,16 @@ public class PatrolEnemy : EnemyCharacter
 
     protected override void EnemyFunctions()
     {
-        if (Vector3.Distance(m_patrolNodes[nodeIndex].position, transform.position) < CLOSE_ENOUGH_TO_NODE)
+        if(m_patrolNodes.Count > 1)
         {
-            nodeIndex++;
-            if (nodeIndex == m_patrolNodes.Count)
-                nodeIndex = 0;
-        }
+            if (XZDistance(m_patrolNodes[nodeIndex].position, transform.position) < CLOSE_ENOUGH_TO_NODE)
+            {
+                nodeIndex++;
+                if (nodeIndex == m_patrolNodes.Count)
+                    nodeIndex = 0;
+            }
 
-        MoveTowards(m_patrolNodes[nodeIndex].position);
+            MoveTowards(m_patrolNodes[nodeIndex].position);
+        }
     }
 }
