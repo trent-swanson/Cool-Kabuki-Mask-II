@@ -7,6 +7,7 @@ public class OrbsDestroy : MonoBehaviour {
     private GameObject m_Player;
 
     Orbs BoolOrb;
+    GameController Controll;
 
     private float m_prox = 2;
 
@@ -32,7 +33,7 @@ public class OrbsDestroy : MonoBehaviour {
         {
             if (Vector3.Distance(m_Player.transform.position, transform.position) <= m_prox)
             {
-
+                Controll.SetItem(true);
                 BoolOrb.SetDead(true);
                 Destroy(this);
             }

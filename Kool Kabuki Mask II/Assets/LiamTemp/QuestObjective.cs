@@ -8,8 +8,7 @@ public class QuestObjective : Quests
 {
 
 
-    [SerializeField]
-    private Image[] m_quests;
+    public Image[] m_quests;
 
     [SerializeField]
     private Image[] m_First;
