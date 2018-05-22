@@ -25,6 +25,7 @@ public class Character : MonoBehaviour
 
     protected float m_colliderHeight;
     protected float m_colliderRadius;
+    protected Vector3 m_colliderCenter;
 
     protected int m_environmentMask;
     protected int m_enemyMask;
@@ -43,8 +44,11 @@ public class Character : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         m_animator = GetComponent<Animator>();
 
-        m_colliderHeight = GetComponent<CapsuleCollider>().height;
-        m_colliderRadius = GetComponent<CapsuleCollider>().radius;
+        CapsuleCollider collider = GetComponent<CapsuleCollider>();
+
+        m_colliderHeight = collider.height;
+        m_colliderRadius = collider.radius;
+        m_colliderCenter = collider.center;
 
         m_environmentMask = LayerMask.GetMask("Environment");
         m_enemyMask = LayerMask.GetMask("Enemy");
@@ -63,7 +67,7 @@ public class Character : MonoBehaviour
         return (m_health <= 0.0f);
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         m_health -= damage;
     }
@@ -88,15 +92,17 @@ public class Character : MonoBehaviour
         m_canAttack = false;
         List<Character> hitObjects = new List<Character>();
 
+        Vector3 colliderPos = transform.position + m_colliderCenter;
+
         RaycastHit[] hits;
         //Right
-        hits = Physics.RaycastAll(transform.position + transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
+        hits = Physics.RaycastAll(colliderPos + transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
         AddHitsToList(ref hitObjects, hits);
         //Center
-        hits = Physics.RaycastAll(transform.position, transform.forward, m_colliderRadius + m_attackRange, mask);
+        hits = Physics.RaycastAll(colliderPos, transform.forward, m_colliderRadius + m_attackRange, mask);
         AddHitsToList(ref hitObjects, hits);
         //Left
-        hits = Physics.RaycastAll(transform.position - transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
+        hits = Physics.RaycastAll(colliderPos - transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
         AddHitsToList(ref hitObjects, hits);
 
         foreach (Character character in hitObjects)
