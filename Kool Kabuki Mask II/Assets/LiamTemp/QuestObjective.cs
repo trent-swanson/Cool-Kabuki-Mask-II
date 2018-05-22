@@ -12,37 +12,31 @@ public class QuestObjective : Quests
 
     [SerializeField]
     private Image[] m_First;
-
+  
     [SerializeField]
     private Image[] m_Second;
 
-    [SerializeField]
-    private Image[] m_Thrid;
-
-    [SerializeField]
-    private Image[] m_End;
 
     private int m_current;
 
-    public bool[] m_Next = new bool[5];
+    public bool[] m_Next = new bool[3];
 
 
 	// Use this for initialization
-	void Start ()
+	void Start()
     {
         m_current = 0;
 
         m_Next[0] = true;
         m_Next[1] = false;
         m_Next[2] = false;
-        m_Next[3] = false;
-        m_Next[4] = false;
+       
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        
+      
 	}
 
 
@@ -50,16 +44,19 @@ public class QuestObjective : Quests
     {
         if(m_Next[0])
         {
-            if (m_current <= m_quests.Length)
+            
+            if (m_current < m_quests.Length)
             {
                 m_quests[m_current].enabled = false;
 
+                if(m_current < (m_quests.Length -1))
                 m_quests[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else if (m_current > m_quests.Length)
+            else
             {
+                --m_current;
                 m_quests[m_current].enabled = false;
 
                 m_current = 0;
@@ -67,23 +64,32 @@ public class QuestObjective : Quests
                 m_Next[0] = false;
                 m_Next[1] = true;
 
-                m_First[0].enabled = true;
 
             }
         }
 
-        else if(m_Next[1])
+        if (m_Next[1])
         {
-            if (m_current <= m_First.Length)
+            if (m_current < m_First.Length)
             {
-                m_First[m_current].enabled = false;
+                if (m_First[0].enabled == false)
+                {
+                    m_First[0].enabled = true;
+                    
+                }
+                else
+                {
+                    m_First[m_current].enabled = false;
+                }
 
-                m_First[m_current + 1].enabled = true;
+                if (m_current < (m_First.Length - 1))
+                    m_First[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else if (m_current > m_First.Length)
+            else if (m_current >= m_First.Length)
             {
+                --m_current;
                 m_First[m_current].enabled = false;
 
                 m_current = 0;
@@ -91,18 +97,30 @@ public class QuestObjective : Quests
             }
         }
 
-        else if (m_Next[2])
+        if (m_Next[2])
         {
-            if (m_current <= m_Second.Length)
+            if (m_current < m_Second.Length)
             {
-                m_Second[m_current].enabled = false;
+                if (m_Second[0].enabled == false)
+                {
+                    m_Second[0].enabled = true;
 
-                m_Second[m_current + 1].enabled = true;
+                }
+                else
+                {
+                    m_Second[m_current].enabled = false;
+                }
+
+                if (m_current < (m_Second.Length - 1))
+                    m_Second[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else if (m_current > m_Second.Length)
+            else if (m_current >= m_Second.Length)
             {
+
+                --m_current;
+
                 m_Second[m_current].enabled = false;
 
                 m_current = 0;
@@ -111,47 +129,7 @@ public class QuestObjective : Quests
 
             }
         }
-
-        else if (m_Next[3])
-        {
-            if (m_current <= m_Thrid.Length)
-            {
-                m_Thrid[m_current].enabled = false;
-
-                m_Thrid[m_current + 1].enabled = true;
-
-                ++m_current;
-            }
-            else if (m_current > m_Thrid.Length)
-            {
-                m_Thrid[m_current].enabled = false;
-
-                m_current = 0;
-
-     
-            }
-        }
-
-        else if (m_Next[4])
-        {
-            if (m_current <= m_End.Length)
-            {
-                m_End[m_current].enabled = false;
-
-                m_End[m_current + 1].enabled = true;
-
-                ++m_current;
-            }
-            else if (m_current > m_End.Length)
-            {
-                m_End[m_current].enabled = false;
-
-                m_current = 0;
-
-            }
-        }
-
-
+       
 
     }
     

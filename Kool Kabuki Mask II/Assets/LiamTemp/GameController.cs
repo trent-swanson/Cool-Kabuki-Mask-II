@@ -13,12 +13,20 @@ public class GameController : MonoBehaviour {
 
     int count;
 
+    bool FirstTalk = false;
+
     GameObject m_OldMan;
 
 	[SerializeField]
     QuestObjective questItem;
 
+
+    private List<GameObject> m_AllEnemies;
+
     private float m_prox = 5;
+
+    [SerializeField]
+    private float m_EProx;
 
     private GameObject m_Player;
 
@@ -28,7 +36,9 @@ public class GameController : MonoBehaviour {
         count = 0;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_OldMan = GameObject.FindGameObjectWithTag("OLDMAN");
-       
+        m_AllEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+
+
     }
 
     // Update is called once per frame
@@ -71,21 +81,11 @@ public class GameController : MonoBehaviour {
 
     void NextQuest()
     {
-        if(count == 1)
+      
+        if (count == 3)
         {
             questItem.m_Next[1] = false;
             questItem.m_Next[2] = true;
-        }
-
-        if (count == 2)
-        {
-            questItem.m_Next[2] = false;
-            questItem.m_Next[3] = true;
-        }
-        if (count == 3)
-        {
-            questItem.m_Next[3] = false;
-            questItem.m_Next[4] = true;
         }
 
     }
@@ -95,33 +95,56 @@ public class GameController : MonoBehaviour {
     {
 
 
-        bool FirstTalk = false;
+        
         if (Input.GetAxisRaw("Use") > 0)
         {
-           if(Input.GetAxisRaw("Use") < 0)
+            if (Vector3.Distance(m_Player.transform.position, m_OldMan.transform.position) <= m_prox)
             {
-                if (Vector3.Distance(m_Player.transform.position, m_OldMan.transform.position) <= m_prox)
+                if (m_keyUp)
                 {
-                    if (m_keyUp)
+                    m_keyUp = false;
+                    if (!FirstTalk)
                     {
-                        if (!FirstTalk)
-                        {
-                            questItem.m_quests[0].enabled = true;
+                        questItem.m_quests[0].enabled = true;
 
-                            FirstTalk = true;
-                        }
+                        FirstTalk = true;
+                    }
 
-                        questItem.NextImage();
+                   
 
-                        m_keyUp = false;
+
+                    questItem.NextImage();
+
+                    if(questItem.m_quests[0].enabled == true)
+                    {
+                        questItem.m_quests[0].enabled = false;
                     }
                     
                 }
+
             }
         }
-        if (!m_keyUp)
+        if (Input.GetAxisRaw("Use") == 0)
         {
-            m_keyUp = true;
+          if (!m_keyUp)
+          {
+              m_keyUp = true;
+          }
+        }
+    }
+
+    void EnemyProx()
+    {
+        foreach(GameObject obj in m_AllEnemies)
+        {
+            if (Vector3.Distance(m_Player.transform.position, obj.transform.position) <= m_prox)
+            {
+                obj.SetActive(true);
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
         }
     }
 
