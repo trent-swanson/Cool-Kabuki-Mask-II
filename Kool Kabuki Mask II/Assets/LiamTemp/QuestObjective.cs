@@ -32,7 +32,7 @@ public class QuestObjective : Quests
     {
         m_current = 0;
 
-        m_Next[0] = false;
+        m_Next[0] = true;
         m_Next[1] = false;
         m_Next[2] = false;
         m_Next[3] = false;
@@ -50,15 +50,15 @@ public class QuestObjective : Quests
     {
         if(m_Next[0])
         {
-            if (m_current < (m_quests.Length + 1))
+            if (m_current <= m_quests.Length)
             {
                 m_quests[m_current].enabled = false;
 
-                m_quests[++m_current].enabled = true;
+                m_quests[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_quests.Length)
             {
                 m_quests[m_current].enabled = false;
 
@@ -72,17 +72,17 @@ public class QuestObjective : Quests
             }
         }
 
-        if(m_Next[1])
+        else if(m_Next[1])
         {
-            if (m_current < (m_First.Length + 1))
+            if (m_current <= m_First.Length)
             {
                 m_First[m_current].enabled = false;
 
-                m_First[++m_current].enabled = true;
+                m_First[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_First.Length)
             {
                 m_First[m_current].enabled = false;
 
@@ -91,17 +91,17 @@ public class QuestObjective : Quests
             }
         }
 
-        if (m_Next[2])
+        else if (m_Next[2])
         {
-            if (m_current < (m_Second.Length + 1))
+            if (m_current <= m_Second.Length)
             {
                 m_Second[m_current].enabled = false;
 
-                m_Second[++m_current].enabled = true;
+                m_Second[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_Second.Length)
             {
                 m_Second[m_current].enabled = false;
 
@@ -112,17 +112,17 @@ public class QuestObjective : Quests
             }
         }
 
-        if (m_Next[3])
+        else if (m_Next[3])
         {
-            if (m_current < (m_Thrid.Length + 1))
+            if (m_current <= m_Thrid.Length)
             {
                 m_Thrid[m_current].enabled = false;
 
-                m_Thrid[++m_current].enabled = true;
+                m_Thrid[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_Thrid.Length)
             {
                 m_Thrid[m_current].enabled = false;
 
@@ -132,17 +132,17 @@ public class QuestObjective : Quests
             }
         }
 
-        if (m_Next[4])
+        else if (m_Next[4])
         {
-            if (m_current < (m_End.Length + 1))
+            if (m_current <= m_End.Length)
             {
                 m_End[m_current].enabled = false;
 
-                m_End[++m_current].enabled = true;
+                m_End[m_current + 1].enabled = true;
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_End.Length)
             {
                 m_End[m_current].enabled = false;
 
