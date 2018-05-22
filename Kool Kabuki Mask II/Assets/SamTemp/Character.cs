@@ -89,7 +89,9 @@ public class Character : MonoBehaviour
         if(m_deathEffect!=null)
             Destroy(Instantiate(m_deathEffect, transform.position, transform.rotation), 5.0f);
 
-        Destroy(gameObject);
+        m_animator.SetBool("Death", true);
+        Destroy(gameObject, 5.0f);
+        this.enabled = false;
     }
 
     public void Attack()

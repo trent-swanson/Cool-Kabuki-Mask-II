@@ -9,6 +9,9 @@ public class Weapon : MonoBehaviour
     [SerializeField]
     protected float m_attackDamage = 10.0f;
 
+    [SerializeField]
+    private AudioSource m_woodHit = null;
+
     public void SetTag(GameObject parent)
     {
         tag = parent.tag;
@@ -32,6 +35,8 @@ public class Weapon : MonoBehaviour
             if(otherCharacter !=null)
             {
                 otherCharacter.TakeDamage(m_attackDamage);
+                if(m_woodHit!=null && !m_woodHit.isPlaying)
+                    m_woodHit.Play();
             }
         }
     }

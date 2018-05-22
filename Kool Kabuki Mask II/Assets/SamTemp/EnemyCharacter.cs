@@ -55,7 +55,7 @@ public class EnemyCharacter : Character
 
         //Check player is close enough for activation
 
-        //Setting states making semi better
+        //Setting states so much nicer than player states. Many switches, much wow
         switch (m_currentState)
         {
             case ENEMY_STATE.ENEMY_FUNCTION:

@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerCharacter : Character
 {
     [SerializeField]
+    private float m_chargeModifier = 1.5f;
+    [SerializeField]
     private float m_strafingSpeed = 10.0f;
     [SerializeField]
     private float m_jumpingSpeed = 10.0f;
@@ -24,6 +26,24 @@ public class PlayerCharacter : Character
     [SerializeField]
     private float m_attackingTime = 1.0f;
     private float m_attackingTimer = 0.0f;
+
+    [SerializeField]
+    private AudioSource m_swordSwing1 = null;
+
+    [SerializeField]
+    private AudioSource m_swordSwing2 = null;
+
+    [SerializeField]
+    private AudioSource m_voice1 = null;
+    [SerializeField]
+    private AudioSource m_voice2 = null;
+    [SerializeField]
+    private AudioSource m_voice3 = null;
+    [SerializeField]
+    private AudioSource m_voice4 = null;
+
+    [SerializeField]
+    private AudioSource m_armourClanking = null;
 
     enum PLAYER_STATE {IDLE, ATTACKING, BLOCKING, IN_AIR};
     private PLAYER_STATE m_playerState = PLAYER_STATE.IDLE; 
@@ -50,7 +70,7 @@ public class PlayerCharacter : Character
 
             //automatically move player forward
             Vector3 velocity = Vector3.zero;
-            velocity += transform.forward * m_forwardSpeed;
+            velocity += transform.forward * m_forwardSpeed * m_chargeModifier;
             velocity.y = m_rb.velocity.y;
             m_rb.velocity = velocity;
 
@@ -59,9 +79,15 @@ public class PlayerCharacter : Character
         }
         //When blocking dont allow any movement
         else if (Input.GetAxisRaw("Block") > 0.0f && m_playerState !=PLAYER_STATE.IN_AIR)
+        {
             m_playerState = PLAYER_STATE.BLOCKING;
+            m_animator.SetBool("Block", true);
+        }
         else
         {
+            //Stop blocking
+            m_animator.SetBool("Block", false);
+
             //On attack, force player forawrds with just rotation control
             if (m_canAttack && Input.GetAxisRaw("Attack") > 0.0f && m_playerState != PLAYER_STATE.IN_AIR)
             {
@@ -90,6 +116,37 @@ public class PlayerCharacter : Character
 
                 //strafe
                 velocity += transform.right * Input.GetAxisRaw("Horizontal") * m_strafingSpeed;
+
+                //Todo this is bad, relly bad, but hey game jam
+                if(Input.GetAxisRaw("Vertical")>0)
+                {
+                    m_animator.SetBool("Forward", true);
+                    m_animator.SetBool("Backward", false);
+                    m_animator.SetBool("Strafe", false);
+                    m_animator.SetBool("Idle", false);
+                } else if(Input.GetAxisRaw("Vertical") < 0)
+                { 
+                    m_animator.SetBool("Forward", false);
+                    m_animator.SetBool("Backward", true);
+                    m_animator.SetBool("Strafe", false);
+                    m_animator.SetBool("Idle", false);
+                } else if (Input.GetAxisRaw("Horizontal") != 0.0f)
+                {
+                    m_animator.SetBool("Forward", false);
+                    m_animator.SetBool("Backward", false);
+                    m_animator.SetBool("Strafe", true);
+                    m_animator.SetBool("Idle", false);
+                }
+                else
+                {
+                    m_animator.SetBool("Forward", false);
+                    m_animator.SetBool("Backward", false);
+                    m_animator.SetBool("Strafe", false);
+                    m_animator.SetBool("Idle", true);
+                }
+
+                if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
+                    PlaySound(m_armourClanking);
 
                 //Default to current y val unless jumping
                 if (Input.GetAxisRaw("Jump") > 0.0f && IsGrounded())
@@ -130,6 +187,26 @@ public class PlayerCharacter : Character
         {
             m_health -= damage;
             m_healthRegenTimer = 0.0f;
+
+            int randomIndex = Random.Range(0, 3);
+
+            switch (randomIndex)
+            {
+                case 0:
+                    PlaySound(m_voice1);
+                    break;
+                case 1:
+                    PlaySound(m_voice2);
+                    break;
+                case 2:
+                    PlaySound(m_voice3);
+                    break;
+                case 3:
+                    PlaySound(m_voice4);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -139,10 +216,17 @@ public class PlayerCharacter : Character
         m_canAttack = true;
         m_weaponScript.DisableDamage();
         m_playerState = PLAYER_STATE.IDLE;
+        PlaySound(m_swordSwing1);
     }
 
     public float GetHealthPercent()
     {
         return m_health / m_maxHealth;
+    }
+
+    public void PlaySound(AudioSource audio)
+    {
+        if (audio != null && !audio.isPlaying)
+            audio.Play();
     }
 }
