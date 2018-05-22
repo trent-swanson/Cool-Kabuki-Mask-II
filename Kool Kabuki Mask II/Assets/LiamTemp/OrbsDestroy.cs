@@ -14,6 +14,9 @@ public class OrbsDestroy : MonoBehaviour {
     [SerializeField]
     GameObject m_ClenseParticle = null;
 
+    [SerializeField]
+    private AudioSource m_ClenseShrine = null; 
+
    
 
     // Use this for initialization
@@ -38,6 +41,7 @@ public class OrbsDestroy : MonoBehaviour {
             {
                 Controll.SetItem(true);
                 Clense();
+                Destroy(this);
                 
             }
         }
@@ -49,6 +53,11 @@ public class OrbsDestroy : MonoBehaviour {
         if(m_ClenseParticle!=null)
         {
             Destroy(Instantiate(m_ClenseParticle, transform.position, transform.rotation), 10.0f);
+        }
+
+        if (m_ClenseShrine != null && !m_ClenseShrine.isPlaying)
+        {
+            m_ClenseShrine.Play(); 
         }
     }
 

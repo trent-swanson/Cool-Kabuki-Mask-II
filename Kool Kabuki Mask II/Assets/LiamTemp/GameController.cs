@@ -20,7 +20,13 @@ public class GameController : MonoBehaviour {
 	[SerializeField]
     QuestObjective questItem;
 
+
+    private List<GameObject> m_AllEnemies;
+
     private float m_prox = 5;
+
+    [SerializeField]
+    private float m_EProx;
 
     private GameObject m_Player;
 
@@ -30,8 +36,9 @@ public class GameController : MonoBehaviour {
         count = 0;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_OldMan = GameObject.FindGameObjectWithTag("OLDMAN");
+        m_AllEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
 
-       
+
     }
 
     // Update is called once per frame
@@ -123,6 +130,21 @@ public class GameController : MonoBehaviour {
           {
               m_keyUp = true;
           }
+        }
+    }
+
+    void EnemyProx()
+    {
+        foreach(GameObject obj in m_AllEnemies)
+        {
+            if (Vector3.Distance(m_Player.transform.position, obj.transform.position) <= m_prox)
+            {
+                obj.SetActive(true);
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
         }
     }
 
