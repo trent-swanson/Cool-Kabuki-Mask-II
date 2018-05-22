@@ -1,18 +1,16 @@
 fileFormatVersion: 2
-guid: 659eb610c3484bb4c82f340e1012a099
-timeCreated: 1526954779
+guid: 576e7eff76ea3b4479c1be645f447481
+timeCreated: 1526961372
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: KabukiMask_Mesh_001
     400000: //RootNode
-    400002: KabukiMask_Mesh_001
-    2100000: KabukiMask_Mesh_001Mat
-    2300000: KabukiMask_Mesh_001
-    3300000: KabukiMask_Mesh_001
-    4300000: KabukiMask_Mesh_001
+    2100000: Default
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Step_01
   externalObjects: {}
   materials:
     importMaterials: 1
