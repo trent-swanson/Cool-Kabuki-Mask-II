@@ -118,7 +118,6 @@ public class EnemyCharacter : Character
             default:
                 break;
         }
-
     }
 
     public override void TakeDamage(float damage)
