@@ -37,6 +37,7 @@ public class Quests : MonoBehaviour
     {
 
         Vector3 Direction = m_Player.transform.position - transform.position;
+        Direction.y = 0;
 
         Direction.Normalize();
         if (Vector3.Distance(m_Player.transform.position, transform.position) <= m_prox)

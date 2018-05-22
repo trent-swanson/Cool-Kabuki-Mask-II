@@ -103,6 +103,11 @@ public class GameController : MonoBehaviour {
                 if (m_keyUp)
                 {
                     m_keyUp = false;
+                    if (questItem.m_quests[0].enabled == true)
+                    {
+                        questItem.m_quests[0].enabled = false;
+                    }
+
                     if (!FirstTalk)
                     {
                         questItem.m_quests[0].enabled = true;
@@ -110,15 +115,13 @@ public class GameController : MonoBehaviour {
                         FirstTalk = true;
                     }
 
-                   
 
 
-                    questItem.NextImage();
-
-                    if(questItem.m_quests[0].enabled == true)
+                    if (questItem.m_quests[0].enabled == false)
                     {
-                        questItem.m_quests[0].enabled = false;
+                        questItem.NextImage();
                     }
+                   
                     
                 }
 

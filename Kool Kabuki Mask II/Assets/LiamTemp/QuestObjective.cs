@@ -47,11 +47,13 @@ public class QuestObjective : Quests
             
             if (m_current < m_quests.Length)
             {
+                
+                
                 m_quests[m_current].enabled = false;
 
-                if(m_current < (m_quests.Length -1))
-                m_quests[m_current + 1].enabled = true;
-
+                if (m_current < (m_quests.Length - 1))
+                    m_quests[m_current + 1].enabled = true;
+                
                 ++m_current;
             }
             else
