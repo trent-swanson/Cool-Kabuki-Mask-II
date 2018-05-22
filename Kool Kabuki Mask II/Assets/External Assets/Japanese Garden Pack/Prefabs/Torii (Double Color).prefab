@@ -10,6 +10,8 @@ GameObject:
   - component: {fileID: 401902}
   - component: {fileID: 3370128}
   - component: {fileID: 2380828}
+  - component: {fileID: 136125939981573142}
+  - component: {fileID: 136991969116224124}
   m_Layer: 0
   m_Name: Torii (Double Color)
   m_TagString: Untagged
@@ -83,3 +85,29 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190554}
   m_IsPrefabParent: 1
+--- !u!136 &136125939981573142
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.34
+  m_Height: 7.152269
+  m_Direction: 1
+  m_Center: {x: 2.5, y: -1.7458642, z: -0.000015869737}
+--- !u!136 &136991969116224124
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190554}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.34
+  m_Height: 7.152269
+  m_Direction: 1
+  m_Center: {x: -2.5, y: -1.7458642, z: -0.000015869737}

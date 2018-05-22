@@ -10,6 +10,7 @@ GameObject:
   - component: {fileID: 401832}
   - component: {fileID: 3303870}
   - component: {fileID: 2390458}
+  - component: {fileID: 65216322720126428}
   m_Layer: 0
   m_Name: Rock Bowl 2
   m_TagString: Untagged
@@ -23,13 +24,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 141748}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4378964, y: 0.6296893, z: -5.247614}
+  m_LocalRotation: {x: -0.028828867, y: -0.096727036, z: 0.0037552237, w: 0.9948863}
+  m_LocalPosition: {x: -0.756, y: -1.135, z: 1.753}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -3.2470002, y: -11.127001, z: 0.749}
 --- !u!23 &2390458
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -82,3 +83,15 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141748}
   m_IsPrefabParent: 1
+--- !u!65 &65216322720126428
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 141748}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4298097, y: 0.47376356, z: 1.4298097}
+  m_Center: {x: 0.0000037550926, y: -0.36351472, z: -0.000015257435}
