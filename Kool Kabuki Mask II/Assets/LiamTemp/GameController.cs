@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour {
         count = 0;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_OldMan = GameObject.FindGameObjectWithTag("OLDMAN");
+        questItem.GetComponent<QuestObjective>();
     }
 
     // Update is called once per frame
@@ -90,6 +91,7 @@ public class GameController : MonoBehaviour {
 
     void Talk()
     {
+
 
         bool FirstTalk = false;
         if (Input.GetAxisRaw("Use") > 0)
