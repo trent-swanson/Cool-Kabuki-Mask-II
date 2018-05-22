@@ -11,6 +11,9 @@ public class OrbsDestroy : MonoBehaviour {
     [SerializeField]
     private float m_prox = 2;
 
+    [SerializeField]
+    GameObject m_ClenseParticle = null;
+
    
 
     // Use this for initialization
@@ -34,12 +37,19 @@ public class OrbsDestroy : MonoBehaviour {
             if (Vector3.Distance(m_Player.transform.position, transform.position) <= m_prox)
             {
                 Controll.SetItem(true);
-            
+                Clense();
                 
             }
         }
     }
 
 
+    void Clense()
+    {
+        if(m_ClenseParticle!=null)
+        {
+            Destroy(Instantiate(m_ClenseParticle, transform.position, transform.rotation), 10.0f);
+        }
+    }
 
 }
