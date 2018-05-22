@@ -12,6 +12,11 @@ public class PlayerCharacter : Character
     [SerializeField]
     protected float m_jumpingBuffer = 0.05f;
 
+    [SerializeField]
+    protected float m_healthRegenPerSecond = 5.0f;
+    [SerializeField]
+    protected float m_healthRegenTime = 3.0f;
+    private float m_healthRegenTimer = 0.0f;
     enum PLAYER_STATE {IDLE, ATTACKING, BLOCKING};
     private PLAYER_STATE m_playerState = PLAYER_STATE.IDLE; 
 
@@ -26,6 +31,7 @@ public class PlayerCharacter : Character
     {
         base.Update();
 
+        //Movement, attacking, blocking
         Vector3 velocity = Vector3.zero;
 
         //Forward
@@ -57,7 +63,13 @@ public class PlayerCharacter : Character
         else
             m_playerState = PLAYER_STATE.IDLE;
 
-
+        //Health Regen
+        if(m_health != m_maxHealth)
+        {
+            m_healthRegenTimer += Time.deltaTime;
+            if (m_healthRegenTimer > m_healthRegenTime)
+                m_health += m_healthRegenPerSecond * Time.deltaTime;
+        }
     }
 
     private bool IsGrounded()
@@ -70,16 +82,14 @@ public class PlayerCharacter : Character
     public override void TakeDamage(float damage)
     {
         if (m_playerState != PLAYER_STATE.BLOCKING)
+        {
             m_health -= damage;
+            m_healthRegenTimer = 0.0f;
+        }
     }
 
-    public bool CanHitPlayer(Vector3 enemyPosition)
+    public float GetHealthPercent()
     {
-        //TODO
-        //Check if player is blocking
-        if(m_playerState == PLAYER_STATE.BLOCKING)
-            return false;
-        //Check funcky angle
-        return true;
+        return m_health / m_maxHealth;
     }
 }
