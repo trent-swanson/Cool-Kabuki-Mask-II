@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
 
     int count;
 
-    Quests OldMan;
+    GameObject m_OldMan;
 
     QuestObjective questItem;
 
@@ -20,11 +20,13 @@ public class GameController : MonoBehaviour {
 
     private GameObject m_Player;
 
-    // Use this for initialization
+    // Use this for initialization    
     void Start ()
     {
         count = 0;
         m_Player = GameObject.FindGameObjectWithTag("Player");
+        m_OldMan = GameObject.FindGameObjectWithTag("OLDMAN");
+        questItem.GetComponent<QuestObjective>();
     }
 
     // Update is called once per frame
@@ -90,10 +92,11 @@ public class GameController : MonoBehaviour {
     void Talk()
     {
 
+
         bool FirstTalk = false;
         if (Input.GetAxisRaw("Use") > 0)
         {
-            if (Vector3.Distance(m_Player.transform.position, OldMan.transform.position) <= m_prox)
+            if (Vector3.Distance(m_Player.transform.position, m_OldMan.transform.position) <= m_prox)
             {
                 if(!FirstTalk)
                 {

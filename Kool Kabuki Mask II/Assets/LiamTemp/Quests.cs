@@ -12,6 +12,7 @@ public class Quests : MonoBehaviour
     [SerializeField]
     private float m_prox;
 
+    [SerializeField]
     private float m_TurnSpeed = 10.0f;
 
 
