@@ -23,6 +23,7 @@ public class EnemyCharacter : Character
     protected float m_detectionCone = 30.0f;
 
     protected GameObject m_player = null;
+
     [SerializeField]
     protected Vector3 m_lastKnowPos = Vector3.zero;
     protected bool m_isPositionSet = false;
@@ -117,7 +118,6 @@ public class EnemyCharacter : Character
             default:
                 break;
         }
-
     }
 
     public override void TakeDamage(float damage)
@@ -143,13 +143,13 @@ public class EnemyCharacter : Character
     protected void AttackPlayer()
     {
         //When just close enough to attack 
-        if (m_canAttack && XZDistance(m_player.transform.position, transform.position) < m_attackRange * 0.9f + m_colliderRadius)
+        if (m_canAttack && XZDistance(m_player.transform.position, transform.position) < 0.5f + m_colliderRadius)
         {
             Vector3 targetDirection = m_player.transform.position - transform.position;
             targetDirection.y = 0;
             Quaternion rotation = Quaternion.LookRotation(targetDirection);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, float.PositiveInfinity);
-            Attack(m_playerMask);
+            Attack();
         }
         else
         {
