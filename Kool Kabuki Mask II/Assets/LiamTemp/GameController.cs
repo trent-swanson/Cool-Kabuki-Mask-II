@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
 
     private GameObject m_Player;
 
-    // Use this for initialization
+    // Use this for initialization    
     void Start ()
     {
         count = 0;
