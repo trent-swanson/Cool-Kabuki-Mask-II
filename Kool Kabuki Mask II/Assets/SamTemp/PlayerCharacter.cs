@@ -9,6 +9,11 @@ public class PlayerCharacter : Character
     protected float m_strafingSpeed = 10.0f;
     [SerializeField]
     protected float m_jumpingSpeed = 10.0f;
+    [SerializeField]
+    protected float m_jumpingBuffer = 0.05f;
+
+    enum PLAYER_STATE {IDLE, ATTACKING, BLOCKING};
+    private PLAYER_STATE m_playerState = PLAYER_STATE.IDLE; 
 
     // Use this for initialization
     protected override void Start ()
@@ -41,24 +46,40 @@ public class PlayerCharacter : Character
         //Set veleocity 
         m_rb.velocity = velocity;
 
-        //Attacking
-        if (m_canAttack && Input.GetAxisRaw("Fire1") > 0.0f)
+        //Attacking/Blocking
+        if (Input.GetAxisRaw("Block") > 0.0f)
+            m_playerState = PLAYER_STATE.BLOCKING;
+        else if (m_canAttack && Input.GetAxisRaw("Attack") > 0.0f)
+        {
+            m_playerState = PLAYER_STATE.ATTACKING;
             Attack(m_enemyMask);
+        }
+        else
+            m_playerState = PLAYER_STATE.IDLE;
+
 
     }
 
     private bool IsGrounded()
     {
-        if (Physics.Raycast(transform.position, -transform.up, m_colliderHeight+ 0.1f, m_environmentMask))
+        if (Physics.Raycast(transform.position + m_colliderCenter, -transform.up, m_colliderHeight/2.0f + m_jumpingBuffer, m_environmentMask))
             return true;
         return false;
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        if (m_playerState != PLAYER_STATE.BLOCKING)
+            m_health -= damage;
     }
 
     public bool CanHitPlayer(Vector3 enemyPosition)
     {
         //TODO
         //Check if player is blocking
-        return true;
+        if(m_playerState == PLAYER_STATE.BLOCKING)
+            return false;
         //Check funcky angle
+        return true;
     }
 }
