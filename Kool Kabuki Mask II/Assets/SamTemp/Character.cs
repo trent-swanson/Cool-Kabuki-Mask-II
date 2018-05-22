@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CapsuleCollider))]
 public class Character : MonoBehaviour
 {
     [SerializeField]
@@ -40,11 +39,21 @@ public class Character : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         m_animator = GetComponent<Animator>();
 
-        CapsuleCollider collider = GetComponent<CapsuleCollider>();
+        CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
+        if(capsuleCollider != null)
+        {
+            m_colliderHeight = capsuleCollider.height;
+            m_colliderRadius = capsuleCollider.radius;
+            m_colliderCenter = capsuleCollider.center;
+        }
 
-        m_colliderHeight = collider.height;
-        m_colliderRadius = collider.radius;
-        m_colliderCenter = collider.center;
+        BoxCollider boxCollider = GetComponent<BoxCollider>();
+        if (capsuleCollider != null)
+        {
+            m_colliderHeight = boxCollider.size.y;
+            m_colliderRadius = boxCollider.size.x;
+            m_colliderCenter = boxCollider.center;
+        }
 
         m_environmentMask = LayerMask.GetMask("Environment");
 
