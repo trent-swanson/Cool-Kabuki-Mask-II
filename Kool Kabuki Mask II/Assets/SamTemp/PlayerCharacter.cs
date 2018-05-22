@@ -58,7 +58,7 @@ public class PlayerCharacter : Character
         else if (m_canAttack && Input.GetAxisRaw("Attack") > 0.0f)
         {
             m_playerState = PLAYER_STATE.ATTACKING;
-            Attack(m_enemyMask);
+            Attack();
         }
         else
             m_playerState = PLAYER_STATE.IDLE;

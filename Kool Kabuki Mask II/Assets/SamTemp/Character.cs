@@ -10,9 +10,6 @@ public class Character : MonoBehaviour
     protected float m_maxHealth = 0.0f;
 
     [SerializeField]
-    protected float m_attackDamage = 10.0f;
-
-    [SerializeField]
     protected GameObject m_deathEffect = null;
 
     [SerializeField]
@@ -21,15 +18,14 @@ public class Character : MonoBehaviour
     protected float m_rotateSpeed = 10.0f;
 
     [SerializeField]
-    protected float m_attackRange = 1.0f;
+    protected GameObject m_weaponObject = null;
+    private Weapon m_weaponScript = null;
 
     protected float m_colliderHeight;
     protected float m_colliderRadius;
     protected Vector3 m_colliderCenter;
 
     protected int m_environmentMask;
-    protected int m_enemyMask;
-    protected int m_playerMask;
 
     protected bool m_canAttack = true;
 
@@ -51,8 +47,9 @@ public class Character : MonoBehaviour
         m_colliderCenter = collider.center;
 
         m_environmentMask = LayerMask.GetMask("Environment");
-        m_enemyMask = LayerMask.GetMask("Enemy");
-        m_playerMask = LayerMask.GetMask("Player");
+
+        m_weaponScript = m_weaponObject.GetComponent<Weapon>();
+        m_weaponScript.SetTag(gameObject);
     }
 
     // Update is called once per frame
@@ -86,29 +83,11 @@ public class Character : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Attack(int mask)
+    public void Attack()
     {
         m_animator.SetBool("Attacking", true);
         m_canAttack = false;
-        List<Character> hitObjects = new List<Character>();
-
-        Vector3 colliderPos = transform.position + m_colliderCenter;
-
-        RaycastHit[] hits;
-        //Right
-        hits = Physics.RaycastAll(colliderPos + transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
-        AddHitsToList(ref hitObjects, hits);
-        //Center
-        hits = Physics.RaycastAll(colliderPos, transform.forward, m_colliderRadius + m_attackRange, mask);
-        AddHitsToList(ref hitObjects, hits);
-        //Left
-        hits = Physics.RaycastAll(colliderPos - transform.right * m_colliderRadius, transform.forward, m_colliderRadius + m_attackRange, mask);
-        AddHitsToList(ref hitObjects, hits);
-
-        foreach (Character character in hitObjects)
-        {
-            character.TakeDamage(m_attackDamage);
-        }
+        m_weaponScript.EnableDamage();
     }
 
     private void AddHitsToList(ref List<Character> hitObjects, RaycastHit[] hits)
@@ -125,5 +104,6 @@ public class Character : MonoBehaviour
     {
         m_animator.SetBool("Attacking", false);
         m_canAttack = true;
+        m_weaponScript.DisableDamage();
     }
 }
