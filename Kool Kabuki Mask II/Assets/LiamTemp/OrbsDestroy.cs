@@ -6,10 +6,16 @@ public class OrbsDestroy : MonoBehaviour {
 
     private GameObject m_Player;
 
-    Orbs BoolOrb;
     GameController Controll;
 
+    [SerializeField]
     private float m_prox = 2;
+
+    [SerializeField]
+    GameObject m_ClenseParticle = null;
+
+    [SerializeField]
+    private AudioSource m_ClenseShrine = null; 
 
    
 
@@ -34,12 +40,25 @@ public class OrbsDestroy : MonoBehaviour {
             if (Vector3.Distance(m_Player.transform.position, transform.position) <= m_prox)
             {
                 Controll.SetItem(true);
-                BoolOrb.SetDead(true);
+                Clense();
                 Destroy(this);
+                
             }
         }
     }
 
 
+    void Clense()
+    {
+        if(m_ClenseParticle!=null)
+        {
+            Destroy(Instantiate(m_ClenseParticle, transform.position, transform.rotation), 10.0f);
+        }
+
+        if (m_ClenseShrine != null && !m_ClenseShrine.isPlaying)
+        {
+            m_ClenseShrine.Play(); 
+        }
+    }
 
 }
