@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 80f5fdcc5809e544dbb9d002a858fd51
-timeCreated: 1526954779
+guid: 73e291b1895748041b2c20c5e1667c12
+timeCreated: 1526960056
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: polySurface1
     400000: //RootNode
-    400002: polySurface1
-    2100000: polySurface1Mat
-    2300000: polySurface1
-    3300000: polySurface1
-    4300000: polySurface1
+    2100000: Huse_initialShadingGroup1
+    2100002: lambert1
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: polySurface56
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -87,7 +87,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
