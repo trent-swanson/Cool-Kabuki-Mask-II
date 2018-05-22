@@ -32,7 +32,7 @@ public class QuestObjective : Quests
     {
         m_current = 0;
 
-        m_Next[0] = false;
+        m_Next[0] = true;
         m_Next[1] = false;
         m_Next[2] = false;
         m_Next[3] = false;
@@ -54,7 +54,7 @@ public class QuestObjective : Quests
             {
                 m_quests[m_current].enabled = false;
 
-                m_quests[++m_current].enabled = true;
+                m_quests[m_current + 1].enabled = true;
 
                 ++m_current;
             }
@@ -78,7 +78,7 @@ public class QuestObjective : Quests
             {
                 m_First[m_current].enabled = false;
 
-                m_First[++m_current].enabled = true;
+                m_First[m_current + 1].enabled = true;
 
                 ++m_current;
             }
@@ -97,7 +97,7 @@ public class QuestObjective : Quests
             {
                 m_Second[m_current].enabled = false;
 
-                m_Second[++m_current].enabled = true;
+                m_Second[m_current + 1].enabled = true;
 
                 ++m_current;
             }
@@ -118,7 +118,7 @@ public class QuestObjective : Quests
             {
                 m_Thrid[m_current].enabled = false;
 
-                m_Thrid[++m_current].enabled = true;
+                m_Thrid[m_current + 1].enabled = true;
 
                 ++m_current;
             }
@@ -138,7 +138,7 @@ public class QuestObjective : Quests
             {
                 m_End[m_current].enabled = false;
 
-                m_End[++m_current].enabled = true;
+                m_End[m_current + 1].enabled = true;
 
                 ++m_current;
             }
