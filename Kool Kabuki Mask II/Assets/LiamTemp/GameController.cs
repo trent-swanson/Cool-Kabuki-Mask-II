@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour {
 
     GameObject m_OldMan;
 
+	[SerializeField]
     QuestObjective questItem;
 
     private float m_prox = 5;
@@ -27,7 +28,7 @@ public class GameController : MonoBehaviour {
         count = 0;
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_OldMan = GameObject.FindGameObjectWithTag("OLDMAN");
-        questItem.GetComponent<QuestObjective>();
+       
     }
 
     // Update is called once per frame
