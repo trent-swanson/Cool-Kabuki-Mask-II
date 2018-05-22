@@ -1,62 +1,33 @@
 fileFormatVersion: 2
-guid: 71d94169aa4976f4a897602d75bd1719
-timeCreated: 1526961146
+guid: f75108daeea4c324d84b0dde97266396
+timeCreated: 1526961643
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: KabukiMask
-    100004: KabukiMask_001
-    100006: KabukiMask_002
-    100008: KitsuneMask
-    100010: KitsuneMask_001
-    100012: KitsuneMask_002
-    100014: MaskBase_001_JNT
-    100016: MaskLeft_001_JNT
-    100018: MaskNeck_001_JNT
-    100020: MaskRight_001_JNT
-    100022: nurbsCircle1
-    100024: OniMask
-    100026: OniMask_001
-    100028: OniMask_002
+    100002: KabukiMask_001
+    100004: KabukiMask_002
+    100006: MaskBase_001_JNT
+    100008: MaskLeft_001_JNT
+    100010: MaskNeck_001_JNT
+    100012: MaskRight_001_JNT
+    100014: nurbsCircle1
     400000: //RootNode
-    400002: KabukiMask
-    400004: KabukiMask_001
-    400006: KabukiMask_002
-    400008: KitsuneMask
-    400010: KitsuneMask_001
-    400012: KitsuneMask_002
-    400014: MaskBase_001_JNT
-    400016: MaskLeft_001_JNT
-    400018: MaskNeck_001_JNT
-    400020: MaskRight_001_JNT
-    400022: nurbsCircle1
-    400024: OniMask
-    400026: OniMask_001
-    400028: OniMask_002
-    2100000: KitsuneMat_001
-    2100002: JapaneseMaskShowCase_lambert2SG3
-    2100004: JapaneseMaskShowCase_lambert2SG5
+    400002: KabukiMask_001
+    400004: KabukiMask_002
+    400006: MaskBase_001_JNT
+    400008: MaskLeft_001_JNT
+    400010: MaskNeck_001_JNT
+    400012: MaskRight_001_JNT
+    400014: nurbsCircle1
+    2100000: JapaneseMaskShowCase_lambert2SG5
     2300000: KabukiMask_001
     2300002: KabukiMask_002
-    2300004: KitsuneMask_001
-    2300006: KitsuneMask_002
-    2300008: OniMask_001
-    2300010: OniMask_002
     3300000: KabukiMask_001
     3300002: KabukiMask_002
-    3300004: KitsuneMask_001
-    3300006: KitsuneMask_002
-    3300008: OniMask_001
-    3300010: OniMask_002
-    4300000: KitsuneMask_001
-    4300002: KitsuneMask_002
-    4300004: OniMask_001
-    4300006: OniMask_002
-    4300008: KabukiMask_001
-    4300010: KabukiMask_002
-    7400000: Float
+    4300000: KabukiMask_001
+    4300002: KabukiMask_002
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -84,35 +55,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Float
-      takeName: Float
-      firstFrame: 0
-      lastFrame: 60
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
