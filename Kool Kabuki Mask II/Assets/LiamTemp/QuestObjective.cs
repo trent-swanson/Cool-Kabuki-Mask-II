@@ -50,7 +50,7 @@ public class QuestObjective : Quests
     {
         if(m_Next[0])
         {
-            if (m_current < (m_quests.Length + 1))
+            if (m_current <= m_quests.Length)
             {
                 m_quests[m_current].enabled = false;
 
@@ -58,7 +58,7 @@ public class QuestObjective : Quests
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_quests.Length)
             {
                 m_quests[m_current].enabled = false;
 
@@ -72,9 +72,9 @@ public class QuestObjective : Quests
             }
         }
 
-        if(m_Next[1])
+        else if(m_Next[1])
         {
-            if (m_current < (m_First.Length + 1))
+            if (m_current <= m_First.Length)
             {
                 m_First[m_current].enabled = false;
 
@@ -82,7 +82,7 @@ public class QuestObjective : Quests
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_First.Length)
             {
                 m_First[m_current].enabled = false;
 
@@ -91,9 +91,9 @@ public class QuestObjective : Quests
             }
         }
 
-        if (m_Next[2])
+        else if (m_Next[2])
         {
-            if (m_current < (m_Second.Length + 1))
+            if (m_current <= m_Second.Length)
             {
                 m_Second[m_current].enabled = false;
 
@@ -101,7 +101,7 @@ public class QuestObjective : Quests
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_Second.Length)
             {
                 m_Second[m_current].enabled = false;
 
@@ -112,9 +112,9 @@ public class QuestObjective : Quests
             }
         }
 
-        if (m_Next[3])
+        else if (m_Next[3])
         {
-            if (m_current < (m_Thrid.Length + 1))
+            if (m_current <= m_Thrid.Length)
             {
                 m_Thrid[m_current].enabled = false;
 
@@ -122,7 +122,7 @@ public class QuestObjective : Quests
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_Thrid.Length)
             {
                 m_Thrid[m_current].enabled = false;
 
@@ -132,9 +132,9 @@ public class QuestObjective : Quests
             }
         }
 
-        if (m_Next[4])
+        else if (m_Next[4])
         {
-            if (m_current < (m_End.Length + 1))
+            if (m_current <= m_End.Length)
             {
                 m_End[m_current].enabled = false;
 
@@ -142,7 +142,7 @@ public class QuestObjective : Quests
 
                 ++m_current;
             }
-            else
+            else if (m_current > m_End.Length)
             {
                 m_End[m_current].enabled = false;
 
