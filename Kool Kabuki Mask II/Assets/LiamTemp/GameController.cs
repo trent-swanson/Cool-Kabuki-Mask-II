@@ -115,12 +115,13 @@ public class GameController : MonoBehaviour {
 
                         m_keyUp = false;
                     }
-                    if (!m_keyUp)
-                    {
-                        m_keyUp = true;
-                    }
+                    
                 }
             }
+        }
+        if (!m_keyUp)
+        {
+            m_keyUp = true;
         }
     }
 
