@@ -98,26 +98,30 @@ public class GameController : MonoBehaviour {
         bool FirstTalk = false;
         if (Input.GetAxisRaw("Use") > 0)
         {
-            if (Vector3.Distance(m_Player.transform.position, m_OldMan.transform.position) <= m_prox)
+           if(Input.GetAxisRaw("Use") < 0)
             {
-                if(m_keyUp)
+                if (Vector3.Distance(m_Player.transform.position, m_OldMan.transform.position) <= m_prox)
                 {
-                    if (!FirstTalk)
+                    if (m_keyUp)
                     {
-                        questItem.m_quests[0].enabled = true;
+                        if (!FirstTalk)
+                        {
+                            questItem.m_quests[0].enabled = true;
 
-                        FirstTalk = true;
+                            FirstTalk = true;
+                        }
+
+                        questItem.NextImage();
+
+                        m_keyUp = false;
                     }
-
-                    questItem.NextImage();
-
-                    m_keyUp = false;
-                }
-                if(!m_keyUp)
-                {
-                    m_keyUp = true;
+                    
                 }
             }
+        }
+        if (!m_keyUp)
+        {
+            m_keyUp = true;
         }
     }
 
