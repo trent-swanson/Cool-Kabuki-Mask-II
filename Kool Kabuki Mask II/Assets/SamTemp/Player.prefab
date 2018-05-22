@@ -290,17 +290,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 100
+  m_attackDamage: 10
   m_deathEffect: {fileID: 0}
   m_forwardSpeed: 7
   m_rotateSpeed: 10
-  m_weaponObject: {fileID: 0}
+  m_attackRange: 1
   m_strafingSpeed: 10
   m_jumpingSpeed: 3
   m_jumpingBuffer: 0.05
-  m_jumpLandingDistance: 0.5
-  m_healthRegenPerSecond: 5
-  m_healthRegenTime: 3
-  m_attackingTime: 1
 --- !u!124 &124036280575380252
 Behaviour:
   m_ObjectHideFlags: 1
@@ -320,4 +317,4 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}

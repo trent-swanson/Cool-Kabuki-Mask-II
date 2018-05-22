@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     protected GameObject m_weaponObject = null;
-    protected Weapon m_weaponScript = null;
+    private Weapon m_weaponScript = null;
 
     protected float m_colliderHeight;
     protected float m_colliderRadius;
@@ -42,13 +42,13 @@ public class Character : MonoBehaviour
         CapsuleCollider capsuleCollider = GetComponent<CapsuleCollider>();
         if(capsuleCollider != null)
         {
-            m_colliderHeight = capsuleCollider.height/2.0f;
+            m_colliderHeight = capsuleCollider.height;
             m_colliderRadius = capsuleCollider.radius;
             m_colliderCenter = capsuleCollider.center;
         }
 
         BoxCollider boxCollider = GetComponent<BoxCollider>();
-        if (boxCollider != null)
+        if (capsuleCollider != null)
         {
             m_colliderHeight = boxCollider.size.y;
             m_colliderRadius = boxCollider.size.x;
@@ -109,7 +109,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public virtual void EnableAttack()
+    public void EnableAttack()
     {
         m_animator.SetBool("Attacking", false);
         m_canAttack = true;
