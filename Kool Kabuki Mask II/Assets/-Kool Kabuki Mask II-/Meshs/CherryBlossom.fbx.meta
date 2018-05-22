@@ -1,19 +1,24 @@
 fileFormatVersion: 2
-guid: 73e291b1895748041b2c20c5e1667c12
-timeCreated: 1526960056
+guid: 9fe575ab1e9811844be1a785ab1f7d54
+timeCreated: 1526963732
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: Huse_initialShadingGroup1
-    2100002: lambert1
-    2100004: Gate_Temple
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: polySurface56
-    4300002: Gates
+    100000: Blossoms
+    100002: //RootNode
+    100004: Tree
+    400000: Blossoms
+    400002: //RootNode
+    400004: Tree
+    2100000: Blossoms1
+    2100002: Blossom_Tree_Trunk
+    2300000: Blossoms
+    2300002: Tree
+    3300000: Blossoms
+    3300002: Tree
+    4300000: Blossoms
+    4300002: Tree
     9500000: //RootNode
   externalObjects: {}
   materials:

@@ -1,20 +1,16 @@
 fileFormatVersion: 2
-guid: 73e291b1895748041b2c20c5e1667c12
-timeCreated: 1526960056
+guid: 69c16459e4e17aa45ac6dcb35e022c36
+timeCreated: 1526965759
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Huse_initialShadingGroup1
-    2100002: lambert1
-    2100004: Gate_Temple
+    2100000: StingrayPBS1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface56
-    4300002: Gates
-    9500000: //RootNode
+    4300000: Crown
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -89,7 +85,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
