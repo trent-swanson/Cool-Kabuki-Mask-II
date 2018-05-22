@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 114509271147938278}
   - component: {fileID: 114655443384065684}
   m_Layer: 0
-  m_Name: Guard
+  m_Name: Hidden
   m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

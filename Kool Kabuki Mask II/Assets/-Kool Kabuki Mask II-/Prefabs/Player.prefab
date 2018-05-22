@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 124887553524404748}
   - component: {fileID: 81466777755369560}
   - component: {fileID: 114667892575289688}
+  - component: {fileID: 114959745299663492}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1141,8 +1142,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 1.5
-  far clip plane: 600
+  near clip plane: 1
+  far clip plane: 700
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1277,6 +1278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_attackDamage: 10
+  m_woodHit: {fileID: 0}
 --- !u!114 &114734609449216700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1293,11 +1295,35 @@ MonoBehaviour:
   m_forwardSpeed: 7
   m_rotateSpeed: 10
   m_weaponObject: {fileID: 1964047089028024}
+  m_chargeModifier: 1.5
   m_strafingSpeed: 10
   m_jumpingSpeed: 6
   m_jumpingBuffer: 0.05
+  m_jumpLandingDistance: 0.5
   m_healthRegenPerSecond: 5
   m_healthRegenTime: 3
+  m_attackingTime: 1
+  m_swordSwing1: {fileID: 0}
+  m_swordSwing2: {fileID: 0}
+  m_voice1: {fileID: 0}
+  m_voice2: {fileID: 0}
+  m_voice3: {fileID: 0}
+  m_voice4: {fileID: 0}
+  m_armourClanking: {fileID: 0}
+--- !u!114 &114959745299663492
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1213254269715948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf907de1e08d564e9a07eb96cc9337f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ViewRangeDown: 0.5
+  m_ViewRangeUp: 0.5
+  sensitivityY: 3
 --- !u!124 &124887553524404748
 Behaviour:
   m_ObjectHideFlags: 1
