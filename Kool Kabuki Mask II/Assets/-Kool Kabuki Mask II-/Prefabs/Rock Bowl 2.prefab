@@ -10,7 +10,7 @@ GameObject:
   - component: {fileID: 401832}
   - component: {fileID: 3303870}
   - component: {fileID: 2390458}
-  - component: {fileID: 65216322720126428}
+  - component: {fileID: 136440613973806702}
   m_Layer: 0
   m_Name: Rock Bowl 2
   m_TagString: Untagged
@@ -83,8 +83,8 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 141748}
   m_IsPrefabParent: 1
---- !u!65 &65216322720126428
-BoxCollider:
+--- !u!136 &136440613973806702
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -92,6 +92,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.4298097, y: 0.47376356, z: 1.4298097}
-  m_Center: {x: 0.0000037550926, y: -0.36351472, z: -0.000015257435}
+  m_Radius: 0.71490484
+  m_Height: 0.47376356
+  m_Direction: 1
+  m_Center: {x: -0.000000059604645, y: -0.3635128, z: 0.0000000013541908}
