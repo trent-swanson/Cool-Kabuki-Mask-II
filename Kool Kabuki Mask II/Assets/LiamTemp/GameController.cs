@@ -138,7 +138,7 @@ public class GameController : MonoBehaviour {
           if (!m_keyUp)
           {
               m_keyUp = true;
-                Loook.CanOn();
+               
           }
         }
     }

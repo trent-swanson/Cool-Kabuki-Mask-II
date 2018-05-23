@@ -16,6 +16,8 @@ public class QuestObjective : Quests
     [SerializeField]
     private Image[] m_Second;
 
+    [SerializeField]
+    CanvasLook Loook;
 
     private int m_current;
 
@@ -61,6 +63,7 @@ public class QuestObjective : Quests
                 if (m_current >= m_quests.Length)
                 {
                     m_Paused = false;
+                    Loook.CanOn();
                 }
             }
             else if(m_current >= m_quests.Length)
@@ -69,7 +72,7 @@ public class QuestObjective : Quests
                 m_quests[m_current].enabled = false;
 
                 m_current = 0;
-                
+                Loook.CanOn();
 
                 m_Next[0] = false;
                 m_Next[1] = true;
@@ -105,6 +108,7 @@ public class QuestObjective : Quests
 
                 m_current = 0;
                 m_Paused = false;
+                Loook.CanOn();
 
             }
         }
@@ -140,7 +144,7 @@ public class QuestObjective : Quests
                 m_Second[m_current].enabled = false;
 
                 m_current = 0;
-
+                Loook.CanOn();
                 m_Paused = false;
 
             }
