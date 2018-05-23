@@ -344,7 +344,7 @@ Transform:
   - {fileID: 4149483022704120}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -73.215004, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -20.461, z: 0}
 --- !u!4 &4418439270349484
 Transform:
   m_ObjectHideFlags: 1
@@ -814,7 +814,11 @@ MonoBehaviour:
   m_rotateSpeed: 10
   m_weaponObject: {fileID: 1794924732531346}
   m_currentState: 0
-  m_allies: []
+  m_allies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_detectionRange: 10
   m_detectionCone: 30
   m_distanceToStartAttacking: 2
@@ -896,7 +900,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -957631071
+  randomSeed: -1320270093
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -1048,7 +1052,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1456,7 +1460,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 7
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -1798,9 +1802,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.42068958, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 0}
-        key2: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0.2665441, g: 0.41734278, b: 0.625, a: 0}
+        key1: {r: 0.53152037, g: 0.62029666, b: 0.8308824, a: 1}
+        key2: {r: 0, g: 0, b: 0, a: 0.2901961}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -1814,17 +1818,17 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
-        atime1: 65535
-        atime2: 0
-        atime3: 0
+        atime0: 10987
+        atime1: 23708
+        atime2: 42983
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 2
+        m_NumAlphaKeys: 4
       minGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
