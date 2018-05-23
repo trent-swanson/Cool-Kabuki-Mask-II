@@ -49,7 +49,7 @@ public class QuestObjective : Quests
             
             if (m_current < m_quests.Length)
             {
-                m_Paused = true;
+               
 
                 m_quests[m_current].enabled = false;
 
@@ -57,20 +57,22 @@ public class QuestObjective : Quests
                     m_quests[m_current + 1].enabled = true;
                 
                 ++m_current;
+
+                if (m_current >= m_quests.Length)
+                {
+                    m_Paused = false;
+                }
             }
-            else
+            else if(m_current >= m_quests.Length)
             {
                 --m_current;
                 m_quests[m_current].enabled = false;
 
                 m_current = 0;
+                
 
                 m_Next[0] = false;
                 m_Next[1] = true;
-
-                m_Paused = false;
-
-
             }
         }
 
@@ -81,7 +83,8 @@ public class QuestObjective : Quests
                 if (m_First[0].enabled == false)
                 {
                     m_First[0].enabled = true;
-                    
+                    m_Paused = true;
+
                 }
                 else
                 {
@@ -91,7 +94,7 @@ public class QuestObjective : Quests
                 if (m_current < (m_First.Length - 1))
                     m_First[m_current + 1].enabled = true;
 
-                m_Paused = true;
+                
 
                 ++m_current;
             }
@@ -114,6 +117,8 @@ public class QuestObjective : Quests
                 {
                     m_Second[0].enabled = true;
 
+                    m_Paused = true;
+
                 }
                 else
                 {
@@ -123,7 +128,7 @@ public class QuestObjective : Quests
                 if (m_current < (m_Second.Length - 1))
                     m_Second[m_current + 1].enabled = true;
 
-                m_Paused = true;
+               
 
                 ++m_current;
             }
@@ -140,8 +145,6 @@ public class QuestObjective : Quests
 
             }
         }
-       
 
-    }
-    
+    }   
 }
