@@ -143,7 +143,7 @@ public class EnemyCharacter : Character
     protected void AttackPlayer()
     {
         //When just close enough to attack 
-        if (m_canAttack && XZDistance(m_player.transform.position, transform.position) < 0.5f + m_colliderRadius)
+        if (m_canAttack && XZDistance(m_player.transform.position, transform.position) < 1.0f + m_colliderRadius)
         {
             Vector3 targetDirection = m_player.transform.position - transform.position;
             targetDirection.y = 0;

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - OLDMAN
+  - Enemy
   layers:
   - Default
   - TransparentFX

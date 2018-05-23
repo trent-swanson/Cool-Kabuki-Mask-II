@@ -16,6 +16,7 @@ public class PlayerCharacter : Character
 
     [SerializeField]
     private float m_jumpLandingDistance = 0.5f;
+    private bool m_enableLanding = false;
 
     [SerializeField]
     private float m_healthRegenPerSecond = 5.0f;
@@ -45,7 +46,11 @@ public class PlayerCharacter : Character
     [SerializeField]
     private AudioSource m_armourClanking = null;
 
+    [SerializeField]
+    private QuestObjective m_questObjective = null;
+
     enum PLAYER_STATE {IDLE, ATTACKING, BLOCKING, IN_AIR};
+    [SerializeField]
     private PLAYER_STATE m_playerState = PLAYER_STATE.IDLE; 
 
     // Use this for initialization
@@ -59,8 +64,10 @@ public class PlayerCharacter : Character
     {
         base.Update();
 
-        //Movement, attacking, blocking
+        if (m_questObjective.m_Paused)
+            return;
 
+        //Movement, attacking, blocking
         if(m_playerState == PLAYER_STATE.ATTACKING)
         {
             //Move forwards for limited time
@@ -100,10 +107,16 @@ public class PlayerCharacter : Character
                 if (m_playerState == PLAYER_STATE.IN_AIR)
                 {
                     //Check for landing
-                    if (Physics.Raycast(transform.position + m_colliderCenter, -transform.up, m_colliderHeight + m_jumpLandingDistance, m_environmentMask))
+                    if(!m_enableLanding)
+                    {
+                        if (!Physics.Raycast(transform.position + m_colliderCenter, -transform.up, m_colliderHeight + m_jumpLandingDistance, m_environmentMask))
+                            m_enableLanding = true;
+                    }
+                    if (m_enableLanding && Physics.Raycast(transform.position + m_colliderCenter, -transform.up, m_colliderHeight + m_jumpLandingDistance, m_environmentMask))
                     {
                         m_animator.SetTrigger("JumpLanding");
                         m_playerState = PLAYER_STATE.IDLE;
+                        m_enableLanding = false;
                     }  
                 }
                 else
@@ -123,26 +136,22 @@ public class PlayerCharacter : Character
                     m_animator.SetBool("Forward", true);
                     m_animator.SetBool("Backward", false);
                     m_animator.SetBool("Strafe", false);
-                    m_animator.SetBool("Idle", false);
                 } else if(Input.GetAxisRaw("Vertical") < 0)
                 { 
                     m_animator.SetBool("Forward", false);
                     m_animator.SetBool("Backward", true);
                     m_animator.SetBool("Strafe", false);
-                    m_animator.SetBool("Idle", false);
                 } else if (Input.GetAxisRaw("Horizontal") != 0.0f)
                 {
                     m_animator.SetBool("Forward", false);
                     m_animator.SetBool("Backward", false);
                     m_animator.SetBool("Strafe", true);
-                    m_animator.SetBool("Idle", false);
                 }
                 else
                 {
                     m_animator.SetBool("Forward", false);
                     m_animator.SetBool("Backward", false);
                     m_animator.SetBool("Strafe", false);
-                    m_animator.SetBool("Idle", true);
                 }
 
                 if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
@@ -153,6 +162,7 @@ public class PlayerCharacter : Character
                 {
                     velocity.y = m_jumpingSpeed;
                     m_animator.SetTrigger("Jump");
+                    m_playerState = PLAYER_STATE.IN_AIR;
                 }
                 else
                     velocity.y = m_rb.velocity.y;
