@@ -23,12 +23,9 @@ public class CanvasLook : MonoBehaviour {
 
     void look()
     {
-        Vector3 Direction = m_CamT.transform.position - transform.position;
-       
+      
 
-        Direction.Normalize();
-
-        transform.LookAt(Direction);
+        transform.LookAt(m_CamT);
         
     }
 
