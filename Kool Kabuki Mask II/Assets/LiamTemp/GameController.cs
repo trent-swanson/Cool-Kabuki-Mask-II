@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour {
 
     GameObject m_OldMan;
 
+    CanvasLook Loook;
+
 	[SerializeField]
     QuestObjective questItem;
 
@@ -96,13 +98,13 @@ public class GameController : MonoBehaviour {
     {
 
 
-        
         if (Input.GetAxisRaw("Use") > 0)
         {
             if (Vector3.Distance(m_Player.transform.position, m_OldMan.transform.position) <= m_prox)
             {
                 if (m_keyUp)
                 {
+                    Loook.CanOff();
                     m_keyUp = false;
                     if (questItem.m_quests[0].enabled == true)
                     {
@@ -135,6 +137,7 @@ public class GameController : MonoBehaviour {
           if (!m_keyUp)
           {
               m_keyUp = true;
+                Loook.CanOn();
           }
         }
     }
