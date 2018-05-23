@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerCharacter : Character
@@ -254,4 +255,17 @@ public class PlayerCharacter : Character
 		if (m_swordSwing2 != null && !m_swordSwing2.isPlaying)
 			m_swordSwing2.Play();
 	}
+
+    public override void CharacterDeath()
+    {
+        //Create deatch effect, destroy after 5 seconds
+        if (m_deathEffect != null)
+            Destroy(Instantiate(m_deathEffect, transform.position, transform.rotation), 5.0f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        Destroy(this);
+    }
+
+
 }
