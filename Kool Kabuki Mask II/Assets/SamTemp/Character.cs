@@ -83,7 +83,7 @@ public class Character : MonoBehaviour
         m_health += health;
     }
 
-    public void CharacterDeath()
+    public virtual void CharacterDeath()
     {
         //Create deatch effect, destroy after 5 seconds
         if(m_deathEffect!=null)

@@ -28,6 +28,12 @@ public class EnemyCharacter : Character
     protected Vector3 m_lastKnowPos = Vector3.zero;
     protected bool m_isPositionSet = false;
 
+    [SerializeField]
+    protected GameObject m_smoke = null;
+
+    [SerializeField]
+    protected float m_deathTime = 1.0f;
+
     protected override void Start()
     {
         base.Start();
@@ -220,5 +226,22 @@ public class EnemyCharacter : Character
         a.y = 0;
         b.y = 0;
         return (Vector3.Distance(a, b));
+    }
+
+    public override void CharacterDeath()
+    {
+        //Create deatch effect, destroy after 5 seconds
+        if (m_deathEffect != null)
+            Destroy(Instantiate(m_deathEffect, transform.position, transform.rotation), 5.0f);
+
+        m_weaponScript.enabled = false;
+        this.enabled = false;
+
+        ParticleSystem smoke = m_smoke.GetComponent<ParticleSystem>();
+        var main = smoke.main;
+        main.loop = false;
+
+        m_animator.SetTrigger("Dead");
+        Destroy(gameObject, m_deathTime);
     }
 }

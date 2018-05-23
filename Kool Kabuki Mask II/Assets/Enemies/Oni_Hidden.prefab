@@ -818,6 +818,7 @@ MonoBehaviour:
   m_detectionRange: 10
   m_detectionCone: 30
   m_lastKnowPos: {x: 0, y: 0, z: 0}
+  m_smoke: {fileID: 1166794721824174}
 --- !u!136 &136308227679466264
 CapsuleCollider:
   m_ObjectHideFlags: 1

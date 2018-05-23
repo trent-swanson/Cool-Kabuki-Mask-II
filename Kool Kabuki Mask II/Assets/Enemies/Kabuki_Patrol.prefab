@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1915898137072078
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,6 +806,8 @@ MonoBehaviour:
   m_detectionRange: 10
   m_detectionCone: 30
   m_lastKnowPos: {x: 0, y: 0, z: 0}
+  m_smoke: {fileID: 1855768507961058}
+  m_deathTime: 1
   m_patrolNodes: []
 --- !u!114 &114629452514621100
 MonoBehaviour:

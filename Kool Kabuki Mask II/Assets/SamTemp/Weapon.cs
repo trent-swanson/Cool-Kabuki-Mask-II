@@ -29,7 +29,7 @@ public class Weapon : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(tag != other.tag)
+        if(tag != other.tag && m_canDamage)
         {
             Character otherCharacter = other.gameObject.GetComponent<Character>();
             if(otherCharacter !=null)
