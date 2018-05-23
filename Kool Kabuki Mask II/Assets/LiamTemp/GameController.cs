@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 
     GameObject m_OldMan;
 
+    [SerializeField]
     CanvasLook Loook;
 
 	[SerializeField]

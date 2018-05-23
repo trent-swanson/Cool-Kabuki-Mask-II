@@ -6,7 +6,7 @@ public class OrbsDestroy : MonoBehaviour {
 
     private GameObject m_Player;
 
-    
+    [SerializeField]
     CanvasLook Loook;
 
     [SerializeField]
