@@ -89,7 +89,7 @@ public class Character : MonoBehaviour
         if(m_deathEffect!=null)
             Destroy(Instantiate(m_deathEffect, transform.position, transform.rotation), 5.0f);
 
-        m_animator.SetTrigger("Death");
+        m_animator.SetTrigger("Dead");
         Destroy(gameObject, 5.0f);
         m_weaponScript.enabled = false;
         this.enabled = false;
