@@ -57,7 +57,7 @@ public class Character : MonoBehaviour
 
         m_environmentMask = LayerMask.GetMask("Environment");
 
-        m_weaponScript = m_weaponObject.GetComponent<Weapon>();
+        m_weaponScript = m_weaponObject.GetComponentInChildren<Weapon>();
         m_weaponScript.SetTag(gameObject);
     }
 
