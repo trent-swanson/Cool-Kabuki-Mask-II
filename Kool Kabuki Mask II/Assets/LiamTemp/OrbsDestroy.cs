@@ -6,6 +6,7 @@ public class OrbsDestroy : MonoBehaviour {
 
     private GameObject m_Player;
 
+    [SerializeField]
     GameController Controll;
 
     [SerializeField]
@@ -39,7 +40,10 @@ public class OrbsDestroy : MonoBehaviour {
         {
             if (Vector3.Distance(m_Player.transform.position, transform.position) <= m_prox)
             {
+                
+
                 Controll.SetItem(true);
+
                 Clense();
                 Destroy(this);
                 
