@@ -113,6 +113,8 @@ public class GameController : MonoBehaviour {
                         questItem.m_quests[0].enabled = true;
 
                         FirstTalk = true;
+
+                        questItem.m_Paused = true;
                     }
 
 
