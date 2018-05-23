@@ -123,6 +123,11 @@ public class QuestObjective : Quests
 
                     m_Paused = true;
 
+                    if(m_Next[1] == true)
+                    {
+                        m_Next[1] = false;
+                    }
+
                 }
                 else
                 {
