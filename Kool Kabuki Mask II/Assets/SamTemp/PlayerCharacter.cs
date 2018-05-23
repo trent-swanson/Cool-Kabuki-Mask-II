@@ -64,7 +64,7 @@ public class PlayerCharacter : Character
     {
         base.Update();
 
-        if (m_questObjective.m_Paused)
+        if (m_questObjective != null && m_questObjective.m_Paused)
             return;
 
         //Movement, attacking, blocking
