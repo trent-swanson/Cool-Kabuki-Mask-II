@@ -229,10 +229,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4334185149148988}
   - component: {fileID: 95263720812982260}
-  - component: {fileID: 114006791593126118}
   - component: {fileID: 136954917218062560}
   - component: {fileID: 54419696033279222}
-  - component: {fileID: 114676292978184658}
   - component: {fileID: 114946477733578746}
   m_Layer: 0
   m_Name: Kabuki_Patrol
@@ -334,8 +332,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908413222651378}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0639648, y: 46.96098, z: -12.745346}
+  m_LocalRotation: {x: -0, y: -0.5963275, z: -0, w: 0.80274135}
+  m_LocalPosition: {x: 5.6792097, y: 30.45, z: 43.732037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4147416382713552}
@@ -346,7 +344,7 @@ Transform:
   - {fileID: 4149483022704120}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -73.215004, z: 0}
 --- !u!4 &4418439270349484
 Transform:
   m_ObjectHideFlags: 1
@@ -786,49 +784,12 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114006791593126118
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1908413222651378}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f70c0be76cf38c34eb5d1cb4ae0da0eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_health: 10
-  m_deathEffect: {fileID: 0}
-  m_forwardSpeed: 3
-  m_rotateSpeed: 5
-  m_weaponObject: {fileID: 1794924732531346}
-  m_currentState: 0
-  m_allies: []
-  m_detectionRange: 10
-  m_detectionCone: 30
-  m_lastKnowPos: {x: 0, y: 0, z: 0}
-  m_smoke: {fileID: 1855768507961058}
-  m_deathTime: 2.5
-  m_patrolNodes: []
 --- !u!114 &114629452514621100
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794924732531346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af36d78476aa4464ab5f664ec4a80789, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_attackDamage: 10
-  m_woodHit: {fileID: 0}
---- !u!114 &114676292978184658
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1908413222651378}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af36d78476aa4464ab5f664ec4a80789, type: 3}
@@ -851,15 +812,18 @@ MonoBehaviour:
   m_deathEffect: {fileID: 0}
   m_forwardSpeed: 10
   m_rotateSpeed: 10
-  m_weaponObject: {fileID: 1908413222651378}
+  m_weaponObject: {fileID: 1798460748468120}
   m_currentState: 0
   m_allies:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_detectionRange: 10
   m_detectionCone: 30
+  m_distanceToStartAttacking: 2
   m_lastKnowPos: {x: 0, y: 0, z: 0}
-  m_smoke: {fileID: 0}
+  m_smoke: {fileID: 1855768507961058}
   m_deathTime: 2.5
   m_panAngle: 100
   m_panningSpeed: 1

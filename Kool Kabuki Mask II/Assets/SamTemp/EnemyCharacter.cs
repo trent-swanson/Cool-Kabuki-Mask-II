@@ -47,9 +47,12 @@ public class EnemyCharacter : Character
 
         foreach (GameObject ally in m_allies)
         {
-            EnemyCharacter enemyCharacter = ally.GetComponent<EnemyCharacter>();
-            if (enemyCharacter != null)
-                m_enemyCharacters.Add(enemyCharacter);
+            if(ally!=null)
+            {
+                EnemyCharacter enemyCharacter = ally.GetComponent<EnemyCharacter>();
+                if (enemyCharacter != null)
+                    m_enemyCharacters.Add(enemyCharacter);
+            }
         }
     }
 
