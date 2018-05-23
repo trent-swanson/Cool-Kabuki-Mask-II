@@ -330,8 +330,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1010635477009344}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6862488, y: 47.00144, z: -12.485794}
+  m_LocalRotation: {x: -0, y: 0.9914446, z: -0, w: 0.13052869}
+  m_LocalPosition: {x: -10.6, y: 31.16046, z: 46.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4882420473021322}
@@ -342,7 +342,7 @@ Transform:
   - {fileID: 4938665068108050}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 165.00002, z: 0}
 --- !u!4 &4310714087487300
 Transform:
   m_ObjectHideFlags: 1
@@ -801,11 +801,10 @@ MonoBehaviour:
   m_rotateSpeed: 5
   m_weaponObject: {fileID: 1229164939965772}
   m_currentState: 0
-  m_allies:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_allies: []
   m_detectionRange: 10
   m_detectionCone: 30
+  m_distanceToStartAttacking: 1
   m_lastKnowPos: {x: 0, y: 0, z: 0}
   m_smoke: {fileID: 1797441382616194}
   m_deathTime: 2.5
