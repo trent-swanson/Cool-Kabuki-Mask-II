@@ -248,4 +248,10 @@ public class PlayerCharacter : Character
         if (audio != null && audio.isPlaying)
             audio.Stop();
     }
+
+	public void PlaySecondSwing()
+	{
+		if (m_swordSwing2 != null && !m_swordSwing2.isPlaying)
+			m_swordSwing2.Play();
+	}
 }
