@@ -233,13 +233,14 @@ GameObject:
   - component: {fileID: 136954917218062560}
   - component: {fileID: 54419696033279222}
   - component: {fileID: 114676292978184658}
+  - component: {fileID: 114946477733578746}
   m_Layer: 0
   m_Name: Kabuki_Patrol
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1915898137072078
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,7 +792,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1908413222651378}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f70c0be76cf38c34eb5d1cb4ae0da0eb, type: 3}
   m_Name: 
@@ -807,7 +808,7 @@ MonoBehaviour:
   m_detectionCone: 30
   m_lastKnowPos: {x: 0, y: 0, z: 0}
   m_smoke: {fileID: 1855768507961058}
-  m_deathTime: 1
+  m_deathTime: 2.5
   m_patrolNodes: []
 --- !u!114 &114629452514621100
 MonoBehaviour:
@@ -835,6 +836,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackDamage: 10
   m_woodHit: {fileID: 0}
+--- !u!114 &114946477733578746
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908413222651378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f19cde345aeedb43b64d086df8cb005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 10
+  m_deathEffect: {fileID: 0}
+  m_forwardSpeed: 10
+  m_rotateSpeed: 10
+  m_weaponObject: {fileID: 1908413222651378}
+  m_currentState: 0
+  m_allies:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_detectionRange: 10
+  m_detectionCone: 30
+  m_lastKnowPos: {x: 0, y: 0, z: 0}
+  m_smoke: {fileID: 0}
+  m_deathTime: 2.5
+  m_panAngle: 100
+  m_panningSpeed: 1
 --- !u!136 &136954917218062560
 CapsuleCollider:
   m_ObjectHideFlags: 1
