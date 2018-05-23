@@ -264,6 +264,7 @@ GameObject:
   - component: {fileID: 114960646183681098}
   - component: {fileID: 136308227679466264}
   - component: {fileID: 54840584053591696}
+  - component: {fileID: 114399656143718996}
   m_Layer: 0
   m_Name: Oni_Hidden
   m_TagString: Enemy
@@ -797,13 +798,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_attackDamage: 10
   m_woodHit: {fileID: 0}
---- !u!114 &114960646183681098
+--- !u!114 &114399656143718996
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994854967896328}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f19cde345aeedb43b64d086df8cb005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 10
+  m_deathEffect: {fileID: 0}
+  m_forwardSpeed: 10
+  m_rotateSpeed: 10
+  m_weaponObject: {fileID: 1994854967896328}
+  m_currentState: 0
+  m_allies:
+  - {fileID: 0}
+  - {fileID: 0}
+  m_detectionRange: 10
+  m_detectionCone: 30
+  m_lastKnowPos: {x: 0, y: 0, z: 0}
+  m_smoke: {fileID: 0}
+  m_deathTime: 2.5
+  m_panAngle: 100
+  m_panningSpeed: 1
+--- !u!114 &114960646183681098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994854967896328}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df587258f01d9f640a4005992055213e, type: 3}
   m_Name: 
@@ -819,6 +847,7 @@ MonoBehaviour:
   m_detectionCone: 30
   m_lastKnowPos: {x: 0, y: 0, z: 0}
   m_smoke: {fileID: 1166794721824174}
+  m_deathTime: 2.5
 --- !u!136 &136308227679466264
 CapsuleCollider:
   m_ObjectHideFlags: 1
