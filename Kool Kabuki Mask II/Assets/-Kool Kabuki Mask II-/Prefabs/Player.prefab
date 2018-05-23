@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af36d78476aa4464ab5f664ec4a80789, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_attackDamage: 10
+  m_attackDamage: 20
   m_woodHit: {fileID: 0}
 --- !u!114 &114734609449216700
 MonoBehaviour:
@@ -1296,12 +1296,12 @@ MonoBehaviour:
   m_rotateSpeed: 10
   m_weaponObject: {fileID: 1964047089028024}
   m_chargeModifier: 1.5
-  m_strafingSpeed: 10
+  m_strafingSpeed: 5
   m_jumpingSpeed: 6
   m_jumpingBuffer: 0.05
   m_jumpLandingDistance: 0.5
-  m_healthRegenPerSecond: 5
-  m_healthRegenTime: 3
+  m_healthRegenPerSecond: 30
+  m_healthRegenTime: 5
   m_attackingTime: 1
   m_swordSwing1: {fileID: 0}
   m_swordSwing2: {fileID: 0}
@@ -1310,6 +1310,8 @@ MonoBehaviour:
   m_voice3: {fileID: 0}
   m_voice4: {fileID: 0}
   m_armourClanking: {fileID: 0}
+  m_questObjective: {fileID: 0}
+  m_playerState: 0
 --- !u!114 &114959745299663492
 MonoBehaviour:
   m_ObjectHideFlags: 1

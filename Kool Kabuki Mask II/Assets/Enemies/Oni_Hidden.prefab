@@ -808,7 +808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df587258f01d9f640a4005992055213e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 100
+  m_health: 10
   m_deathEffect: {fileID: 0}
   m_forwardSpeed: 3
   m_rotateSpeed: 5
