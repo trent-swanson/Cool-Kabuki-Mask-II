@@ -37,8 +37,6 @@ public class GameController : MonoBehaviour {
         m_Player = GameObject.FindGameObjectWithTag("Player");
         m_OldMan = GameObject.FindGameObjectWithTag("OLDMAN");
         m_AllEnemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
-
-
     }
 
     // Update is called once per frame
@@ -48,6 +46,9 @@ public class GameController : MonoBehaviour {
         HaveOrb();
         NextQuest();
         Talk();
+
+        if (Input.GetAxisRaw("Cancel") > 0.0f)
+            Application.Quit();
     }
 
 
