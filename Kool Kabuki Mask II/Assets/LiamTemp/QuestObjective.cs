@@ -21,6 +21,8 @@ public class QuestObjective : Quests
 
     public bool[] m_Next = new bool[3];
 
+    public bool m_Paused = false;
+
 
 	// Use this for initialization
 	void Start()
@@ -47,8 +49,8 @@ public class QuestObjective : Quests
             
             if (m_current < m_quests.Length)
             {
-                
-                
+                m_Paused = true;
+
                 m_quests[m_current].enabled = false;
 
                 if (m_current < (m_quests.Length - 1))
@@ -65,6 +67,8 @@ public class QuestObjective : Quests
 
                 m_Next[0] = false;
                 m_Next[1] = true;
+
+                m_Paused = false;
 
 
             }
@@ -87,6 +91,8 @@ public class QuestObjective : Quests
                 if (m_current < (m_First.Length - 1))
                     m_First[m_current + 1].enabled = true;
 
+                m_Paused = true;
+
                 ++m_current;
             }
             else if (m_current >= m_First.Length)
@@ -95,6 +101,7 @@ public class QuestObjective : Quests
                 m_First[m_current].enabled = false;
 
                 m_current = 0;
+                m_Paused = false;
 
             }
         }
@@ -116,6 +123,8 @@ public class QuestObjective : Quests
                 if (m_current < (m_Second.Length - 1))
                     m_Second[m_current + 1].enabled = true;
 
+                m_Paused = true;
+
                 ++m_current;
             }
             else if (m_current >= m_Second.Length)
@@ -127,7 +136,7 @@ public class QuestObjective : Quests
 
                 m_current = 0;
 
-           
+                m_Paused = false;
 
             }
         }
