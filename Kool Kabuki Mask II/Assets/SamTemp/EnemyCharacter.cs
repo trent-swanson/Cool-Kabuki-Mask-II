@@ -22,6 +22,9 @@ public class EnemyCharacter : Character
     [SerializeField]
     protected float m_detectionCone = 30.0f;
 
+    [SerializeField]
+    protected float m_distanceToStartAttacking = 1.0f;
+
     protected GameObject m_player = null;
 
     [SerializeField]
@@ -149,13 +152,16 @@ public class EnemyCharacter : Character
     protected void AttackPlayer()
     {
         //When just close enough to attack 
-        if (m_canAttack && XZDistance(m_player.transform.position, transform.position) < 1.0f + m_colliderRadius)
+        if (XZDistance(m_player.transform.position, transform.position) < m_distanceToStartAttacking + m_colliderRadius)
         {
-            Vector3 targetDirection = m_player.transform.position - transform.position;
-            targetDirection.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(targetDirection);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, float.PositiveInfinity);
-            Attack();
+            if(m_canAttack)
+            {
+                Vector3 targetDirection = m_player.transform.position - transform.position;
+                targetDirection.y = 0;
+                Quaternion rotation = Quaternion.LookRotation(targetDirection);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, float.PositiveInfinity);
+                Attack();
+            }
         }
         else
         {

@@ -154,9 +154,6 @@ public class PlayerCharacter : Character
                     m_animator.SetBool("Strafe", false);
                 }
 
-                if(Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0)
-                    PlaySound(m_armourClanking);
-
                 //Default to current y val unless jumping
                 if (Input.GetAxisRaw("Jump") > 0.0f && IsGrounded())
                 {
@@ -175,8 +172,14 @@ public class PlayerCharacter : Character
             }
         }
 
+        //Movement Sound
+        if (m_playerState != PLAYER_STATE.BLOCKING && (  Input.GetAxisRaw("Vertical") != 0 || Input.GetAxisRaw("Horizontal") != 0 || m_playerState == PLAYER_STATE.IN_AIR || m_playerState == PLAYER_STATE.ATTACKING))
+            PlaySound(m_armourClanking);
+        else
+            StopSound(m_armourClanking);
+
         //Health Regen
-        if(m_health != m_maxHealth)
+        if (m_health != m_maxHealth)
         {
             m_healthRegenTimer += Time.deltaTime;
             if (m_healthRegenTimer > m_healthRegenTime)
@@ -238,5 +241,11 @@ public class PlayerCharacter : Character
     {
         if (audio != null && !audio.isPlaying)
             audio.Play();
+    }
+
+    public void StopSound(AudioSource audio)
+    {
+        if (audio != null && audio.isPlaying)
+            audio.Stop();
     }
 }
